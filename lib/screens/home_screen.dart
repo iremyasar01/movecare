@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movecare/widgets/my_appbar.dart';
-
+import 'package:movecare/widgets/my_bottom_navbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,18 +13,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: const MyAppBar(),
-       body: Column(
+      appBar: const MyAppBar(),
+      body: Column(
         children: [
+          const SizedBox(height: 16),
           // Hemşire görseli
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Image.asset(
-              'assets/images/nurse.png', // Görseli projenize ekleyin
-              height: 250,
+              'assets/images/nurse.png', // Görseli projenize eklemeyi unutmayın
+              height: 200,
             ),
           ),
-            // GridView ile yeşil butonlar
+          // GridView ile yeşil butonlar
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,
@@ -32,64 +33,45 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisSpacing: 10,
               padding: const EdgeInsets.all(16),
               children: [
-                _buildButton('arms'),
-                _buildButton('hands'),
-                _buildButton('legs'),
-                _buildButton('shoulder'),
+                _buildButton('Arms', Icons.back_hand_sharp),
+                _buildButton('Legs', Icons.sign_language_sharp),
+                _buildButton('Shoulders', Icons.shape_line_rounded),
+                _buildButton('Hands', Icons.calendar_today),
               ],
             ),
           ),
         ],
       ),
-       bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.directions_run),
-            label: 'activity',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera),
-            label: 'camera',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'history',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'profile',
-          ),
-        ],
-        selectedItemColor: Colors.blue,
-        unselectedItemColor: Colors.grey,
-      ),
     );
   }
-
-  // Buton oluşturan yardımcı fonksiyon
-  Widget _buildButton(String label) {
+  // İkon ve yazı içeren buton oluşturma
+  Widget _buildButton(String label, IconData icon) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.green[400],
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
+        padding: const EdgeInsets.all(16),
       ),
       onPressed: () {
-        // Butona basılınca yapılacak işlem
+        // Butona tıklama işlemleri
       },
-      child: Text(
-        label,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 18,
-       ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, size: 40, color: Colors.white),
+          const SizedBox(height: 10),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
+          ),
+        ],
       ),
-       
     );
   }
 }

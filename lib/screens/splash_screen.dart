@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:movecare/screens/home_screen.dart';
+//import 'package:movecare/screens/home_screen.dart';
+import 'package:movecare/widgets/my_bottom_navbar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
  Future.delayed(const Duration(seconds: 5), (){
 Navigator.of(context).pushReplacement(
   MaterialPageRoute(builder: 
-  (_)=> const HomeScreen(),));
+  (_)=> const MyBottomNavbar(),));
  });
   }
     @override
