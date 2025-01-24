@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:movecare/screens/register_screen.dart';
 import 'package:movecare/widgets/my_bottom_navbar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -50,6 +52,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
         if (response.statusCode == 200) {
           final responseData = jsonDecode(response.body);
+          final userId = responseData['userId']; // Gelen userId'yi alıyoruz
+
+    // SharedPreferences ile sakla
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('userId', userId);
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const MyBottomNavbar()),
@@ -168,6 +175,8 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
+
 
 
 
