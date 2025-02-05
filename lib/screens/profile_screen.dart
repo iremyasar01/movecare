@@ -92,7 +92,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     horizontal: 24.0, vertical: 40.0),
                 child: Column(
                   children: [
-                    const SizedBox(height: 20),
                     Column(
                       children: [
                         Image.asset(
