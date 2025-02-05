@@ -20,10 +20,12 @@ class _ActivityScreenState extends State<ActivityScreen> {
   bool isLoading = true;
    String? _playlistId;
    String? _nextPageToken;
+  late  ScrollController _scrollController;
 
   @override
   void initState() {
     super.initState();
+    _scrollController = ScrollController();
      _videosModel = VideosModel();
      _videosModel!.videos = [];
      _nextPageToken = '';
@@ -81,28 +83,40 @@ class _ActivityScreenState extends State<ActivityScreen> {
         child: Column(
           children: [_buildInfoView(),
           Expanded(
-            child: ListView.builder(
-              itemCount: _videosModel!.videos!.length,
-              itemBuilder: (context, index) {
-                VideoItems videoItems = _videosModel!.videos![index];
-                return  InkWell(onTap: () async {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => VideoPlayerScreen(videoItems: videoItems)));
-                },
-                  child: Container(
-                    padding: const EdgeInsets.all(20),
-                   child:  Row(
-                      children: [CachedNetworkImage(
-                               imageUrl: videoItems.video?.thumbnails?.ThumbnailsDefault?.url ?? 'https://via.placeholder.com/120',
-                     ),
-                     const SizedBox(width: 20),
-                     Flexible(child: Text(videoItems.video?.title ?? 'No title available')),
-                      const SizedBox(width: 20),
-                      ],
-                    ),
-                              
-                  ),
-                );
+            child: NotificationListener<ScrollEndNotification>(
+              onNotification: (ScrollNotification notification){
+                if(_videosModel!.videos!.length >= int.parse(_item!.statistics!.videoCount ?? '0')){
+                  return true;
+                }
+                if(notification.metrics.pixels == notification.metrics.maxScrollExtent){
+                  _loadVideos();
+                }
+                return true;
               },
+              child: ListView.builder(
+                controller: _scrollController,
+                itemCount: _videosModel!.videos!.length,
+                itemBuilder: (context, index) {
+                  VideoItems videoItems = _videosModel!.videos![index];
+                  return  InkWell(onTap: () async {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => VideoPlayerScreen(videoItems: videoItems)));
+                  },
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                     child:  Row(
+                        children: [CachedNetworkImage(
+                                 imageUrl: videoItems.video?.thumbnails?.ThumbnailsDefault?.url ?? 'https://via.placeholder.com/120',
+                       ),
+                       const SizedBox(width: 20),
+                       Flexible(child: Text(videoItems.video?.title ?? 'No title available')),
+                        const SizedBox(width: 20),
+                        ],
+                      ),
+                                
+                    ),
+                  );
+                },
+              ),
             ),
           )],
         ),
