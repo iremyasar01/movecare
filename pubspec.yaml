@@ -68,6 +68,17 @@ flutter:
   assets:
     - assets/images/splash.png
     - assets/images/nurse.png
+    - assets/images/ankle.png
+    - assets/images/arm.png
+    - assets/images/backpain.png
+    - assets/images/eye.png
+    - assets/images/hand.png
+    - assets/images/knee.png
+    - assets/images/leg.png
+    - assets/images/muscle.png
+    - assets/images/neck.png
+    - assets/images/shoulder.png
+
    
 
   # An image asset can refer to one or more resolution-specific "variants", see

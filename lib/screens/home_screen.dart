@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:movecare/screens/Backpain_screen.dart';
+import 'package:movecare/screens/ankle_screen.dart';
 import 'package:movecare/screens/arms_screen.dart';
+import 'package:movecare/screens/eye_screen.dart';
 import 'package:movecare/screens/hands_screen.dart';
+import 'package:movecare/screens/knee_screen.dart';
 import 'package:movecare/screens/legs_screen.dart';
+import 'package:movecare/screens/muscle_screen.dart';
+import 'package:movecare/screens/neck_screen.dart';
 import 'package:movecare/screens/shoulder_screen.dart';
 import 'package:movecare/widgets/my_appbar.dart';
 
@@ -38,35 +44,83 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(16),
               children: [
                 _buildButton(
-                  'Arms',
-                  Icons.back_hand_sharp,
+                  'Arm',
+                 'assets/images/arm.png',
                   () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const ArmsScreen()),
                   ),
                 ),
                 _buildButton(
-                  'Legs',
-                  Icons.sign_language_sharp,
+                  'Leg',
+                'assets/images/leg.png',
                   () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const LegsScreen()),
                   ),
                 ),
                 _buildButton(
-                  'Shoulders',
-                  Icons.shape_line_rounded,
+                  'Shoulder',
+                   'assets/images/shoulder.png',
                   () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const ShoulderScreen()),
                   ),
                 ),
                 _buildButton(
-                  'Hands',
-                  Icons.calendar_today,
+                  'Hand',
+                   'assets/images/hand.png',
                   () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const HandsScreen()),
+                  ),
+                ),
+                   _buildButton(
+                  'Backpain',
+                   'assets/images/backpain.png',
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const BackpainScreen()),
+                  ),
+                ),
+                   _buildButton(
+                  'Ankle',
+                   'assets/images/ankle.png',
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AnkleScreen()),
+                  ),
+                ),
+                   _buildButton(
+                  'Muscle',
+                   'assets/images/muscle.png',
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MuscleScreen()),
+                  ),
+                ),
+                   _buildButton(
+                  'Eye',
+                   'assets/images/eye.png',
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const EyeScreen()),
+                  ),
+                ),
+                   _buildButton(
+                  'Knee',
+                   'assets/images/knee.png',
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const KneeScreen()),
+                  ),
+                ),
+                  _buildButton(
+                  'Neck',
+                  'assets/images/neck.png',
+                  () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NeckScreen()),
                   ),
                 ),
               ],
@@ -78,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // İkon ve yazı içeren buton oluşturma
-  Widget _buildButton(String label, IconData icon, VoidCallback onPressed) {
+  Widget _buildButton(String label, String assetPath, VoidCallback onPressed) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.green[400],
@@ -91,7 +145,12 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 40, color: Colors.white),
+          Image.asset(
+            assetPath,
+            width: 100, height: 100
+          ),
+
+          //Icon(icon, size: 40, color: Colors.white),
           const SizedBox(height: 10),
           Text(
             label,

@@ -13,21 +13,21 @@ class VideosModel {
 		nextPageToken = json['nextPageToken'];
 		if (json['items'] != null) {
 			videos = <VideoItems>[];
-			json['items'].forEach((v) { videos!.add(new VideoItems.fromJson(v)); });
+			json['items'].forEach((v) { videos!.add( VideoItems.fromJson(v)); });
 		}
-		pageInfo = json['pageInfo'] != null ? new PageInfo.fromJson(json['pageInfo']) : null;
+		pageInfo = json['pageInfo'] != null ?  PageInfo.fromJson(json['pageInfo']) : null;
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['kind'] = this.kind;
-		data['etag'] = this.etag;
-		data['nextPageToken'] = this.nextPageToken;
-		if (this.videos != null) {
-      data['items'] = this.videos!.map((v) => v.toJson()).toList();
+		final Map<String, dynamic> data =  <String, dynamic>{};
+		data['kind'] = kind;
+		data['etag'] = etag;
+		data['nextPageToken'] = nextPageToken;
+		if (videos != null) {
+      data['items'] = videos!.map((v) => v.toJson()).toList();
     }
-		if (this.pageInfo != null) {
-      data['pageInfo'] = this.pageInfo!.toJson();
+		if (pageInfo != null) {
+      data['pageInfo'] = pageInfo!.toJson();
     }
 		return data;
 	}
@@ -45,16 +45,16 @@ class VideoItems {
 		kind = json['kind'];
 		etag = json['etag'];
 		id = json['id'];
-		video = json['snippet'] != null ? new Video.fromJson(json['snippet']) : null;
+		video = json['snippet'] != null ?  Video.fromJson(json['snippet']) : null;
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['kind'] = this.kind;
-		data['etag'] = this.etag;
-		data['id'] = this.id;
-		if (this.video != null) {
-      data['snippet'] = this.video!.toJson();
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['kind'] = kind;
+		data['etag'] = etag;
+		data['id'] = id;
+		if (video != null) {
+      data['snippet'] = video!.toJson();
     }
 		return data;
 	}
@@ -80,32 +80,32 @@ class Video {
 		channelId = json['channelId'];
 		title = json['title'];
 		description = json['description'];
-		thumbnails = json['thumbnails'] != null ? new Thumbnails.fromJson(json['thumbnails']) : null;
+		thumbnails = json['thumbnails'] != null ? Thumbnails.fromJson(json['thumbnails']) : null;
 		channelTitle = json['channelTitle'];
 		playlistId = json['playlistId'];
 		position = json['position'];
-		resourceId = json['resourceId'] != null ? new ResourceId.fromJson(json['resourceId']) : null;
+		resourceId = json['resourceId'] != null ? ResourceId.fromJson(json['resourceId']) : null;
 		videoOwnerChannelTitle = json['videoOwnerChannelTitle'];
 		videoOwnerChannelId = json['videoOwnerChannelId'];
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['publishedAt'] = this.publishedAt;
-		data['channelId'] = this.channelId;
-		data['title'] = this.title;
-		data['description'] = this.description;
-		if (this.thumbnails != null) {
-      data['thumbnails'] = this.thumbnails!.toJson();
+		final Map<String, dynamic> data = Map<String, dynamic>();
+		data['publishedAt'] = publishedAt;
+		data['channelId'] = channelId;
+		data['title'] = title;
+		data['description'] = description;
+		if (thumbnails != null) {
+      data['thumbnails'] = thumbnails!.toJson();
     }
-		data['channelTitle'] = this.channelTitle;
-		data['playlistId'] = this.playlistId;
-		data['position'] = this.position;
-		if (this.resourceId != null) {
-      data['resourceId'] = this.resourceId!.toJson();
+		data['channelTitle'] = channelTitle;
+		data['playlistId'] = playlistId;
+		data['position'] = position;
+		if (resourceId != null) {
+      data['resourceId'] = resourceId!.toJson();
     }
-		data['videoOwnerChannelTitle'] = this.videoOwnerChannelTitle;
-		data['videoOwnerChannelId'] = this.videoOwnerChannelId;
+		data['videoOwnerChannelTitle'] = videoOwnerChannelTitle;
+		data['videoOwnerChannelId'] = videoOwnerChannelId;
 		return data;
 	}
 }
@@ -120,29 +120,29 @@ class Thumbnails {
 	Thumbnails({this.ThumbnailsDefault, this.medium, this.high, this.standard, this.maxres});
 
 	Thumbnails.fromJson(Map<String, dynamic> json) {
-		ThumbnailsDefault = json['default'] != null ? new Default.fromJson(json['default']) : null;
-		medium = json['medium'] != null ? new Default.fromJson(json['medium']) : null;
-		high = json['high'] != null ? new Default.fromJson(json['high']) : null;
-		standard = json['standard'] != null ? new Default.fromJson(json['standard']) : null;
-		maxres = json['maxres'] != null ? new Default.fromJson(json['maxres']) : null;
+		ThumbnailsDefault = json['default'] != null ? Default.fromJson(json['default']) : null;
+		medium = json['medium'] != null ? Default.fromJson(json['medium']) : null;
+		high = json['high'] != null ? Default.fromJson(json['high']) : null;
+		standard = json['standard'] != null ? Default.fromJson(json['standard']) : null;
+		maxres = json['maxres'] != null ? Default.fromJson(json['maxres']) : null;
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		if (this.ThumbnailsDefault != null) {
-      data['default'] = this.ThumbnailsDefault!.toJson();
+		final Map<String, dynamic> data = Map<String, dynamic>();
+		if (ThumbnailsDefault != null) {
+      data['default'] = ThumbnailsDefault!.toJson();
     }
-		if (this.medium != null) {
-      data['medium'] = this.medium!.toJson();
+		if (medium != null) {
+      data['medium'] = medium!.toJson();
     }
-		if (this.high != null) {
-      data['high'] = this.high!.toJson();
+		if (high != null) {
+      data['high'] = high!.toJson();
     }
-		if (this.standard != null) {
-      data['standard'] = this.standard!.toJson();
+		if (standard != null) {
+      data['standard'] = standard!.toJson();
     }
-		if (this.maxres != null) {
-      data['maxres'] = this.maxres!.toJson();
+		if (maxres != null) {
+      data['maxres'] = maxres!.toJson();
     }
 		return data;
 	}
@@ -162,10 +162,10 @@ class Default {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['url'] = this.url;
-		data['width'] = this.width;
-		data['height'] = this.height;
+		final Map<String, dynamic> data = Map<String, dynamic>();
+		data['url'] = url;
+		data['width'] = width;
+		data['height'] = height;
 		return data;
 	}
 }
@@ -182,9 +182,9 @@ class ResourceId {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['kind'] = this.kind;
-		data['videoId'] = this.videoId;
+		final Map<String, dynamic> data = Map<String, dynamic>();
+		data['kind'] = kind;
+		data['videoId'] = videoId;
 		return data;
 	}
 }
@@ -201,9 +201,9 @@ class PageInfo {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['totalResults'] = this.totalResults;
-		data['resultsPerPage'] = this.resultsPerPage;
+		final Map<String, dynamic> data = Map<String, dynamic>();
+		data['totalResults'] = totalResults;
+		data['resultsPerPage'] = resultsPerPage;
 		return data;
 	}
 }

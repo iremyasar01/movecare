@@ -9,22 +9,22 @@ class ChannelModel {
 	ChannelModel.fromJson(Map<String, dynamic> json) {
 		kind = json['kind'];
 		etag = json['etag'];
-		pageInfo = json['pageInfo'] != null ? new PageInfo.fromJson(json['pageInfo']) : null;
+		pageInfo = json['pageInfo'] != null ? PageInfo.fromJson(json['pageInfo']) : null;
 		if (json['items'] != null) {
 			items = <Items>[];
-			json['items'].forEach((v) { items!.add(new Items.fromJson(v)); });
+			json['items'].forEach((v) { items!.add(Items.fromJson(v)); });
 		}
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['kind'] = this.kind;
-		data['etag'] = this.etag;
-		if (this.pageInfo != null) {
-      data['pageInfo'] = this.pageInfo!.toJson();
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['kind'] = kind;
+		data['etag'] = etag;
+		if (pageInfo != null) {
+      data['pageInfo'] = pageInfo!.toJson();
     }
-		if (this.items != null) {
-      data['items'] = this.items!.map((v) => v.toJson()).toList();
+		if (items != null) {
+      data['items'] = items!.map((v) => v.toJson()).toList();
     }
 		return data;
 	}
@@ -42,9 +42,9 @@ class PageInfo {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['totalResults'] = this.totalResults;
-		data['resultsPerPage'] = this.resultsPerPage;
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['totalResults'] = totalResults;
+		data['resultsPerPage'] = resultsPerPage;
 		return data;
 	}
 }
@@ -63,24 +63,24 @@ class Items {
 		kind = json['kind'];
 		etag = json['etag'];
 		id = json['id'];
-		snippet = json['snippet'] != null ? new Snippet.fromJson(json['snippet']) : null;
-		contentDetails = json['contentDetails'] != null ? new ContentDetails.fromJson(json['contentDetails']) : null;
-		statistics = json['statistics'] != null ? new Statistics.fromJson(json['statistics']) : null;
+		snippet = json['snippet'] != null ? Snippet.fromJson(json['snippet']) : null;
+		contentDetails = json['contentDetails'] != null ? ContentDetails.fromJson(json['contentDetails']) : null;
+		statistics = json['statistics'] != null ? Statistics.fromJson(json['statistics']) : null;
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['kind'] = this.kind;
-		data['etag'] = this.etag;
-		data['id'] = this.id;
-		if (this.snippet != null) {
-      data['snippet'] = this.snippet!.toJson();
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['kind'] = kind;
+		data['etag'] = etag;
+		data['id'] = id;
+		if (snippet != null) {
+      data['snippet'] = snippet!.toJson();
     }
-		if (this.contentDetails != null) {
-      data['contentDetails'] = this.contentDetails!.toJson();
+		if (contentDetails != null) {
+      data['contentDetails'] = contentDetails!.toJson();
     }
-		if (this.statistics != null) {
-      data['statistics'] = this.statistics!.toJson();
+		if (statistics != null) {
+      data['statistics'] = statistics!.toJson();
     }
 		return data;
 	}
@@ -102,24 +102,24 @@ class Snippet {
 		description = json['description'];
 		customUrl = json['customUrl'];
 		publishedAt = json['publishedAt'];
-		thumbnails = json['thumbnails'] != null ? new Thumbnails.fromJson(json['thumbnails']) : null;
-		localized = json['localized'] != null ? new Localized.fromJson(json['localized']) : null;
+		thumbnails = json['thumbnails'] != null ? Thumbnails.fromJson(json['thumbnails']) : null;
+		localized = json['localized'] != null ? Localized.fromJson(json['localized']) : null;
 		country = json['country'];
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['title'] = this.title;
-		data['description'] = this.description;
-		data['customUrl'] = this.customUrl;
-		data['publishedAt'] = this.publishedAt;
-		if (this.thumbnails != null) {
-      data['thumbnails'] = this.thumbnails!.toJson();
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['title'] = title;
+		data['description'] = description;
+		data['customUrl'] = customUrl;
+		data['publishedAt'] = publishedAt;
+		if (thumbnails != null) {
+      data['thumbnails'] = thumbnails!.toJson();
     }
-		if (this.localized != null) {
-      data['localized'] = this.localized!.toJson();
+		if (localized != null) {
+      data['localized'] = localized!.toJson();
     }
-		data['country'] = this.country;
+		data['country'] = country;
 		return data;
 	}
 }
@@ -132,21 +132,21 @@ class Thumbnails {
 	Thumbnails({this.ThumbnailsDefault, this.medium, this.high});
 
 	Thumbnails.fromJson(Map<String, dynamic> json) {
-		ThumbnailsDefault = json['default'] != null ? new Default.fromJson(json['default']) : null;
-		medium = json['medium'] != null ? new Default.fromJson(json['medium']) : null;
-		high = json['high'] != null ? new Default.fromJson(json['high']) : null;
+		ThumbnailsDefault = json['default'] != null ? Default.fromJson(json['default']) : null;
+		medium = json['medium'] != null ? Default.fromJson(json['medium']) : null;
+		high = json['high'] != null ? Default.fromJson(json['high']) : null;
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		if (this.ThumbnailsDefault != null) {
-      data['default'] = this.ThumbnailsDefault!.toJson();
+		final Map<String, dynamic> data = <String, dynamic>{};
+		if (ThumbnailsDefault != null) {
+      data['default'] = ThumbnailsDefault!.toJson();
     }
-		if (this.medium != null) {
-      data['medium'] = this.medium!.toJson();
+		if (medium != null) {
+      data['medium'] = medium!.toJson();
     }
-		if (this.high != null) {
-      data['high'] = this.high!.toJson();
+		if (high != null) {
+      data['high'] = high!.toJson();
     }
 		return data;
 	}
@@ -166,10 +166,10 @@ class Default {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['url'] = this.url;
-		data['width'] = this.width;
-		data['height'] = this.height;
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['url'] = url;
+		data['width'] = width;
+		data['height'] = height;
 		return data;
 	}
 }
@@ -186,9 +186,9 @@ class Localized {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['title'] = this.title;
-		data['description'] = this.description;
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['title'] = title;
+		data['description'] = description;
 		return data;
 	}
 }
@@ -199,13 +199,13 @@ class ContentDetails {
 	ContentDetails({this.relatedPlaylists});
 
 	ContentDetails.fromJson(Map<String, dynamic> json) {
-		relatedPlaylists = json['relatedPlaylists'] != null ? new RelatedPlaylists.fromJson(json['relatedPlaylists']) : null;
+		relatedPlaylists = json['relatedPlaylists'] != null ? RelatedPlaylists.fromJson(json['relatedPlaylists']) : null;
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		if (this.relatedPlaylists != null) {
-      data['relatedPlaylists'] = this.relatedPlaylists!.toJson();
+		final Map<String, dynamic> data = <String, dynamic>{};
+		if (relatedPlaylists != null) {
+      data['relatedPlaylists'] = relatedPlaylists!.toJson();
     }
 		return data;
 	}
@@ -223,9 +223,9 @@ class RelatedPlaylists {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['likes'] = this.likes;
-		data['uploads'] = this.uploads;
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['likes'] = likes;
+		data['uploads'] = uploads;
 		return data;
 	}
 }
@@ -246,11 +246,11 @@ class Statistics {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['viewCount'] = this.viewCount;
-		data['subscriberCount'] = this.subscriberCount;
-		data['hiddenSubscriberCount'] = this.hiddenSubscriberCount;
-		data['videoCount'] = this.videoCount;
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['viewCount'] = viewCount;
+		data['subscriberCount'] = subscriberCount;
+		data['hiddenSubscriberCount'] = hiddenSubscriberCount;
+		data['videoCount'] = videoCount;
 		return data;
 	}
 }

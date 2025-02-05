@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movecare/screens/activity_screen.dart';
+import 'package:movecare/screens/home_screen.dart';
 //import 'package:movecare/screens/splash_screen.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ActivityScreen(),
+      home: HomeScreen(),
       //SplashScreen(),
 
     );
