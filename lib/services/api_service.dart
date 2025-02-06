@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:movecare/constants/api_constant.dart';
 import 'package:movecare/models/VideosModel.dart';
 import 'package:movecare/models/channelModel.dart';
+import 'package:movecare/models/searchModel.dart';
 
 
 
@@ -63,5 +64,28 @@ class ApiService {
     return videosModel;
 
   }
+  static Future<SearchModel> getVideosByKeyword( String keyword) async {
+  Map<String, String> qParameters = {
+    'part': 'snippet',
+    'channelId': CHANNEL_ID,
+    'q': keyword, // Burada "leg" gibi aramalar yapılacak
+    'maxResults': '8',
+    //'pageToken': pageToken,
+    'key': APIConstant.API_KEY,
+  };
+ Map<String,String> headers = {
+      HttpHeaders.contentTypeHeader:'application/json',
+      };
+  Uri uri = Uri.https(_baseUrl, '/youtube/v3/search', qParameters);
+  final response = await http.get(uri,headers: headers);
+   print("API Response: ${response.body}");
+
+  if (response.statusCode == 200) {
+    return SearchModel.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load videos');
+  }
+}
+
   
 }

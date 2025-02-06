@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'assets/images/leg.png',
                   () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LegsScreen()),
+                    MaterialPageRoute(builder: (context) =>  LegsScreen()),
                   ),
                 ),
                 _buildButton(

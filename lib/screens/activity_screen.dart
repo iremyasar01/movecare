@@ -128,7 +128,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
     return isLoading
         ? const Center(child: CircularProgressIndicator())
         : Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Card(
               child: Row(
                 children: [

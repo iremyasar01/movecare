@@ -5,17 +5,17 @@ import 'package:movecare/widgets/my_appbar.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 
-class VideoPlayerScreen extends StatefulWidget {
- VideoPlayerScreen({super.key, this.videoItems});
-  VideoItems? videoItems;
+class SearchPlayerScreen extends StatefulWidget {
+SearchPlayerScreen({super.key, this.searchItems});
+ SearchItems? searchItems;
 
-  //const VideoPlayerScreen({super.key});
+  //const SearchPlayerScreen({super.key});
 
   @override
-  State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
+  State<SearchPlayerScreen> createState() => _SearchPlayerScreenState();
 }
 
-class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+class _SearchPlayerScreenState extends State<SearchPlayerScreen> {
   late YoutubePlayerController _controller;
   late bool _isPlayerReady;
   @override
@@ -23,7 +23,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     // TODO: implement initState
     super.initState();
     _isPlayerReady = false;
-    _controller = YoutubePlayerController(initialVideoId: widget.videoItems?.video?.resourceId?.videoId ??"",
+    _controller = YoutubePlayerController(initialVideoId: widget.searchItems?.id?.videoId ??"",
     flags: const YoutubePlayerFlags(autoPlay: true, mute: false),
     )..addListener(_listener);
   }
@@ -53,7 +53,7 @@ Widget build(BuildContext context) {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            widget.videoItems?.video?.title ?? "Başlık bulunamadı",
+            widget.searchItems?.search?.title ?? "Başlık bulunamadı",
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),

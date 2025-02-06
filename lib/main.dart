@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movecare/screens/activity_screen.dart';
 import 'package:movecare/screens/home_screen.dart';
 //import 'package:movecare/screens/splash_screen.dart';
 
@@ -15,6 +16,8 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
+      //ActivityScreen(),
+      //HomeScreen(),
       //SplashScreen(),
 
     );
