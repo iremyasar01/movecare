@@ -64,13 +64,13 @@ class ApiService {
     return videosModel;
 
   }
-  static Future<SearchModel> getVideosByKeyword( String keyword) async {
+  static Future<SearchModel> getVideosByKeyword( String keyword,String? pageToken) async {
   Map<String, String> qParameters = {
     'part': 'snippet',
     'channelId': CHANNEL_ID,
     'q': keyword, // Burada "leg" gibi aramalar yapılacak
     'maxResults': '8',
-    //'pageToken': pageToken,
+     if (pageToken != null) 'pageToken': pageToken,
     'key': APIConstant.API_KEY,
   };
  Map<String,String> headers = {

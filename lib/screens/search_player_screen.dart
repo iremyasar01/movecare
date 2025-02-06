@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:movecare/models/VideosModel.dart';
+import 'package:flutter/material.dart'; 
 import 'package:movecare/models/searchModel.dart';
 import 'package:movecare/widgets/my_appbar.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
