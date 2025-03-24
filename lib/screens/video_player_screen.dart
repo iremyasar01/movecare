@@ -5,8 +5,9 @@ import 'package:movecare/widgets/my_appbar.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoPlayerScreen extends StatefulWidget {
-  VideoPlayerScreen({super.key, this.videoItems});
-  VideoItems? videoItems;
+  final VideoItems? videoItems; // 🔹 final ekledik
+
+  const VideoPlayerScreen({super.key, this.videoItems}); // 🔹 const eklendi
 
   @override
   State<VideoPlayerScreen> createState() => _VideoPlayerScreenState();
@@ -60,10 +61,10 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     super.dispose();
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(),
+      appBar: const MyAppBar(), // 🔹 const eklendi
       body: Column(
         children: [
           Padding(
@@ -73,20 +74,20 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
-          Expanded( // 🛠️ Overflow'u önlemek için Expanded ekledik
+          Expanded( // 🔹 Overflow'u önlemek için Expanded ekledik
             child: YoutubePlayerBuilder(
               player: YoutubePlayer(
                 controller: _controller,
                 showVideoProgressIndicator: true,
                 onReady: () {
-                  print("Player is ready");
+                  debugPrint("Player is ready"); // 🔹 print yerine debugPrint
                   _isPlayerReady = true;
                 },
               ),
               builder: (context, player) {
                 return Column(
                   children: [
-                    Expanded(child: player), // 🛠️ YouTube Player'ı genişletiyoruz
+                    Expanded(child: player), // 🔹 Overflow'u önleme
                   ],
                 );
               },

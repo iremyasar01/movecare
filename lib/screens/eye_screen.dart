@@ -5,6 +5,8 @@ import 'package:movecare/services/api_service.dart';
 import 'package:movecare/widgets/my_appbar.dart';
 
 class EyeScreen extends StatefulWidget {
+  const EyeScreen({super.key});
+
   @override
   _EyeScreenState createState() => _EyeScreenState();
 }
@@ -65,7 +67,7 @@ class _EyeScreenState extends State<EyeScreen> {
         nextPageToken = result.nextPageToken; // Yeni sayfa token'ı al
       });
     } catch (e) {
-      print("Error fetching videos: $e");
+      debugPrint("Error fetching videos: $e");
     } finally {
       setState(() {
         isLoading = false;

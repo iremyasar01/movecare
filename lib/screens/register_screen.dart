@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:movecare/services/netcore_service.dart';
 import 'package:movecare/widgets/my_bottom_navbar.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -16,23 +16,16 @@ class RegisterScreen extends StatelessWidget {
   final passwordAgainController = TextEditingController();
 
   Future<void> registerUser(BuildContext context) async {
-    const String url = 'http://localhost:5166/api/Users/Registration';
-    final Map<String, dynamic> requestBody = {
-      'username': usernameController.text,
-      'email': emailController.text,
-      'name': nameController.text,
-      'surname': surnameController.text,
-      'phoneNumber': phoneNumberController.text,
-      'password': passwordController.text,
-      'passwordAgain': passwordAgainController.text,
-    };
-
     try {
-      final response = await http.post(
-        Uri.parse(url),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode(requestBody),
-      );
+      final response = await NetcoreService.register(
+        usernameController.text,
+      emailController.text,
+      nameController.text,
+      surnameController.text,
+      phoneNumberController.text,
+      passwordController.text,
+      passwordAgainController.text,
+    );
 
       if (response.statusCode == 200) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -107,6 +100,7 @@ class RegisterScreen extends StatelessWidget {
                     buildTextField("again password", true, passwordAgainController),
                     const SizedBox(height: 20),
 
+
                     // Save Button
                     ElevatedButton(
                       onPressed: () {
@@ -177,7 +171,17 @@ class RegisterScreen extends StatelessWidget {
       },
     );
   }
-}
+} 
+
+
+
+
+
+
+
+
+
+
 
 
 

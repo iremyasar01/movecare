@@ -5,6 +5,8 @@ import 'package:movecare/services/api_service.dart';
 import 'package:movecare/widgets/my_appbar.dart';
 
 class KneeScreen extends StatefulWidget {
+  const KneeScreen({super.key});
+
   @override
   _KneeScreenState createState() => _KneeScreenState();
 }
@@ -65,7 +67,7 @@ class _KneeScreenState extends State<KneeScreen> {
         nextPageToken = result.nextPageToken; // Yeni sayfa token'ı al
       });
     } catch (e) {
-      print("Error fetching videos: $e");
+      debugPrint("Error fetching videos: $e");
     } finally {
       setState(() {
         isLoading = false;

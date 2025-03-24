@@ -68,7 +68,7 @@ class _ArmsScreenState extends State<ArmsScreen> {
         nextPageToken = result.nextPageToken; // Yeni sayfa token'ı al
       });
     } catch (e) {
-      print("Error fetching videos: $e");
+      debugPrint("Error fetching videos: $e");
     } finally {
       setState(() {
         isLoading = false;

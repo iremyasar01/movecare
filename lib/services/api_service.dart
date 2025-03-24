@@ -5,6 +5,7 @@ import 'package:movecare/constants/api_constant.dart';
 import 'package:movecare/models/VideosModel.dart';
 import 'package:movecare/models/channelModel.dart';
 import 'package:movecare/models/searchModel.dart';
+import 'package:flutter/foundation.dart';
 
 
 
@@ -78,7 +79,7 @@ class ApiService {
       };
   Uri uri = Uri.https(_baseUrl, '/youtube/v3/search', qParameters);
   final response = await http.get(uri,headers: headers);
-   print("API Response: ${response.body}");
+   debugPrint("API Response: ${response.body}");
 
   if (response.statusCode == 200) {
     return SearchModel.fromJson(jsonDecode(response.body));

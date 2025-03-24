@@ -38,7 +38,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
        _channelModel = channelModel;
         _item = _channelModel?.items?[0];
          _playlistId = _item?.contentDetails?.relatedPlaylists?.uploads;
-        print(_playlistId);
+        debugPrint(_playlistId);
         await _loadVideos();
       setState(() {
        // _channelModel = channelModel;

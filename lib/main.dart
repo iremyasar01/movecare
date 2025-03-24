@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+//import 'package:movecare/screens/camera_screen.dart';
+//import 'package:movecare/screens/home_screen.dart';
 import 'package:movecare/screens/splash_screen.dart';
 
+
 void main() {
+  
   runApp(const MyApp());
 }
 
@@ -13,7 +17,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: 
+      //HomeScreen(),
+      //CameraScreen(),
+      //HomeScreen(),
+      SplashScreen(),
   
     
 

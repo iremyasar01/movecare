@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 'assets/images/leg.png',
                   () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  LegsScreen()),
+                    MaterialPageRoute(builder: (context) => const LegsScreen()),
                   ),
                 ),
                 _buildButton(
@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                    'assets/images/shoulder.png',
                   () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ShoulderScreen()),
+                    MaterialPageRoute(builder: (context) => const ShoulderScreen()),
                   ),
                 ),
                 _buildButton(
@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                    'assets/images/hand.png',
                   () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  HandsScreen()),
+                    MaterialPageRoute(builder: (context) =>  const HandsScreen()),
                   ),
                 ),
                    _buildButton(
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                    'assets/images/backpain.png',
                   () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => BackpainScreen()),
+                    MaterialPageRoute(builder: (context) => const BackpainScreen()),
                   ),
                 ),
                    _buildButton(
@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                    'assets/images/ankle.png',
                   () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  AnkleScreen()),
+                    MaterialPageRoute(builder: (context) => const AnkleScreen()),
                   ),
                 ),
                    _buildButton(
@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                    'assets/images/muscle.png',
                   () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  MuscleScreen()),
+                    MaterialPageRoute(builder: (context) =>  const MuscleScreen()),
                   ),
                 ),
                    _buildButton(
@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                    'assets/images/eye.png',
                   () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  EyeScreen()),
+                    MaterialPageRoute(builder: (context) => const EyeScreen()),
                   ),
                 ),
                    _buildButton(
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                    'assets/images/knee.png',
                   () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) =>  KneeScreen()),
+                    MaterialPageRoute(builder: (context) => const KneeScreen()),
                   ),
                 ),
                   _buildButton(

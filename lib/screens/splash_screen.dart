@@ -22,11 +22,12 @@ Navigator.of(context).pushReplacement(
   (_)=> const MyBottomNavbar(),));
  });
  */
-Future.delayed(const Duration(seconds: 5), (){
-Navigator.of(context).pushReplacement(
-  MaterialPageRoute(builder: 
-  (_)=> const LoginScreen (),));
- });
+Future.delayed(const Duration(seconds: 5), () {
+  if (!mounted) return; // ✅ Widget hala ekranda mı kontrol et
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(builder: (_) => const LoginScreen()),
+  );
+});
   }
     @override
  void dispose(){

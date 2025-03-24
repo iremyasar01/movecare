@@ -1,8 +1,7 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:movecare/services/netcore_service.dart';
 import 'package:movecare/widgets/my_appbar.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -25,59 +24,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
     fetchUserData();
   }
 
-  Future<void> fetchUserData() async {
-    final prefs = await SharedPreferences.getInstance();
-    final userId = prefs.getInt('userId');
+    Future<void> fetchUserData() async {
+    final userService = NetcoreService();
+    final result = await userService.getUserData();
 
-    if (userId != null) {
-      final url = 'http://localhost:5166/api/Users/GetUser?id=$userId';
-      final response = await http.get(Uri.parse(url));
-
-      if (response.statusCode == 200) {
-        setState(() {
-          userData = jsonDecode(response.body);
-        });
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Failed to load user data')),
-        );
-      }
-    } else {
+    if (result != null && result.containsKey('error')) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('User ID not found. Please log in.')),
+        SnackBar(content: Text(result['error'])),
       );
+    } else {
+      setState(() {
+        userData = result;
+      });
     }
   }
 
- Future<void> updatePassword(String currentPassword, String newPassword) async {
-  final prefs = await SharedPreferences.getInstance();
-  final userId = prefs.getInt('userId');
+  Future<void> updatePassword(String currentPassword, String newPassword) async {
+    final userService = NetcoreService();
+    final result = await userService.updatePassword(currentPassword, newPassword);
 
-  if (userId != null) {
-    final url = 'http://localhost:5166/api/Users/UpdatePassword';
-    final response = await http.post(
-      Uri.parse(url),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
-        'userId': userId,
-        'currentPassword': currentPassword,
-        'newPassword': newPassword,
-        'confirmNewPassword': newPassword, // Bu satır eklendi
-      }),
-    );
-
-    if (response.statusCode == 200) {
+    if (result != null && result.containsKey('error')) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(result['error'])),
+      );
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Password updated successfully!')),
       );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to update password: ${response.body}')),
-      );
     }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -213,5 +188,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
+
+
 
 

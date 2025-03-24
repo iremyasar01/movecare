@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:movecare/screens/register_screen.dart';
+import 'package:movecare/services/netcore_service.dart';
 import 'package:movecare/widgets/my_bottom_navbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'dart:convert';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -32,36 +31,25 @@ class _LoginScreenState extends State<LoginScreen> {
         );
         return;
       }
+
       setState(() {
         _isLoading = true;
       });
 
-      final url = Uri.parse("http://localhost:5166/api/Users/Login");
-
       try {
-        final response = await http.post(
-          url,
-          headers: {'Content-Type': 'application/json'},
-          body: jsonEncode({
-            'email': emailOrUsername, // email veya username için
-            'username': emailOrUsername, // Backend bunu kontrol ediyor
-            'password': password,
-            'passwordAgain': passwordAgain,
-          }),
-        );
+        final response = await NetcoreService.login(emailOrUsername, password, passwordAgain);
 
         if (response.statusCode == 200) {
           final responseData = jsonDecode(response.body);
-          final userId = responseData['userId']; // Gelen userId'yi alıyoruz
+          final userId = responseData['userId'];
 
-    // SharedPreferences ile sakla
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('userId', userId);
+          // Kullanıcı ID'sini SharedPreferences ile sakla
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setInt('userId', userId);
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const MyBottomNavbar()),
           );
-          print("Login successful: $responseData");
         } else if (response.statusCode == 204) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Invalid login credentials!')),
@@ -73,7 +61,6 @@ class _LoginScreenState extends State<LoginScreen> {
           );
         }
       } catch (e) {
-        //print('Connection error: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Connection error: $e')),
         );

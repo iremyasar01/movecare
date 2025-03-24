@@ -68,7 +68,7 @@ class _AnkleScreenState extends State<AnkleScreen> {
         nextPageToken = result.nextPageToken; // Yeni sayfa token'ı al
       });
     } catch (e) {
-      print("Error fetching videos: $e");
+      debugPrint("Error fetching videos: $e");
     } finally {
       setState(() {
         isLoading = false;

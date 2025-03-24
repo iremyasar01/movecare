@@ -5,6 +5,8 @@ import 'package:movecare/services/api_service.dart';
 import 'package:movecare/widgets/my_appbar.dart';
 
 class LegsScreen extends StatefulWidget {
+  const LegsScreen({super.key});
+
   @override
   _LegsScreenState createState() => _LegsScreenState();
 }
@@ -65,7 +67,7 @@ class _LegsScreenState extends State<LegsScreen> {
         nextPageToken = result.nextPageToken; // Yeni sayfa token'ı al
       });
     } catch (e) {
-      print("Error fetching videos: $e");
+     debugPrint("Error fetching videos: $e");
     } finally {
       setState(() {
         isLoading = false;

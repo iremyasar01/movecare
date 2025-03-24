@@ -128,7 +128,7 @@ class Thumbnails {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = Map<String, dynamic>();
+		final Map<String, dynamic> data = <String, dynamic>{};
 		if (ThumbnailsDefault != null) {
       data['default'] = ThumbnailsDefault!.toJson();
     }
@@ -162,7 +162,7 @@ class Default {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = Map<String, dynamic>();
+		final Map<String, dynamic> data = <String, dynamic>{};
 		data['url'] = url;
 		data['width'] = width;
 		data['height'] = height;
@@ -182,7 +182,7 @@ class ResourceId {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = Map<String, dynamic>();
+		final Map<String, dynamic> data = <String, dynamic>{};
 		data['kind'] = kind;
 		data['videoId'] = videoId;
 		return data;
@@ -201,7 +201,7 @@ class PageInfo {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = Map<String, dynamic>();
+		final Map<String, dynamic> data = <String, dynamic>{};
 		data['totalResults'] = totalResults;
 		data['resultsPerPage'] = resultsPerPage;
 		return data;

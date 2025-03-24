@@ -5,8 +5,9 @@ import 'package:movecare/widgets/my_appbar.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class SearchPlayerScreen extends StatefulWidget {
-  SearchPlayerScreen({super.key, this.searchItems});
- SearchItems? searchItems;
+  final SearchItems? searchItems; // 🔹 final ekledik
+
+  const SearchPlayerScreen({super.key, this.searchItems}); // 🔹 const eklendi
 
   @override
   State<SearchPlayerScreen> createState() => _SearchPlayerScreenState();
@@ -21,7 +22,8 @@ class _SearchPlayerScreenState extends State<SearchPlayerScreen> {
     super.initState();
     _isPlayerReady = false;
 
-   _controller = YoutubePlayerController(initialVideoId: widget.searchItems?.id?.videoId ??"",
+    _controller = YoutubePlayerController(
+      initialVideoId: widget.searchItems?.id?.videoId ?? "",
       flags: const YoutubePlayerFlags(autoPlay: true, mute: false),
     )..addListener(_listener);
   }
@@ -59,33 +61,33 @@ class _SearchPlayerScreenState extends State<SearchPlayerScreen> {
     super.dispose();
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(),
+      appBar: const MyAppBar(), // 🔹 const eklendi
       body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-               widget.searchItems?.search?.title ?? "no found title",
+              widget.searchItems?.search?.title ?? "No title found",
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
-          Expanded( // 🛠️ Overflow'u önlemek için Expanded ekledik
+          Expanded( // 🔹 Overflow'u önlemek için Expanded ekledik
             child: YoutubePlayerBuilder(
               player: YoutubePlayer(
                 controller: _controller,
                 showVideoProgressIndicator: true,
                 onReady: () {
-                  print("Player is ready");
+                  debugPrint("Player is ready"); // 🔹 print yerine debugPrint
                   _isPlayerReady = true;
                 },
               ),
               builder: (context, player) {
                 return Column(
                   children: [
-                    Expanded(child: player), // 🛠️ YouTube Player'ı genişletiyoruz
+                    Expanded(child: player), // 🔹 Overflow'u önleme
                   ],
                 );
               },
@@ -96,6 +98,7 @@ class _SearchPlayerScreenState extends State<SearchPlayerScreen> {
     );
   }
 }
+
 
 
 
